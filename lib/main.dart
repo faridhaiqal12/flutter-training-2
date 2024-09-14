@@ -6,36 +6,44 @@ void main(List<String> args) {
 
 class MyApp extends StatelessWidget {
   MyApp({super.key});
-  List<Color> myColor = [
+
+  List<Color> Mycolor = [
     Colors.black,
-    Colors.amberAccent,
-    Colors.cyan,
-    Colors.limeAccent
+    Colors.blue,
+    Colors.green,
+    Colors.yellow,
+    Colors.pink,
+    Colors.red
   ];
 
-  List<Widget> myList = List.generate(
-    100,
-    (index) => Text(
-      "${index + 1}",
-      style: TextStyle(
-        fontSize: 20 + double.parse(index.toString()),
-      ),
-    ),
-  );
+  // List<Widget> mylist = List.generate(
+  //   100,
+  //   (index) => Text("${index + 1}",style: TextStyle(fontSize: double.parse(index.toString())),),
+  // );
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(
-          title: Text("Toosyta"),
-          backgroundColor: Colors.pink,
-        ),
-        body: ListView(
-          children: myList,
-        ),
-      ),
+          appBar: AppBar(
+            backgroundColor: Colors.blue,
+            title: Text("Toosyta"),
+          ),
+          body: ListView.separated(
+              separatorBuilder: (context, index) {
+                return Container(
+                  height: 50,
+                );
+              },
+              itemCount: Mycolor.length,
+              itemBuilder: (context, index) {
+                return Container(
+                  width: 300,
+                  height: 300,
+                  color: Mycolor[index],
+                );
+              })),
     );
   }
 }
